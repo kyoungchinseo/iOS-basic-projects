@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="제목:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="23O-GX-rDo">
+                                <rect key="frame" x="71" y="329" width="400" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cPn-KL-Oip">
+                                <rect key="frame" x="121" y="50" width="320" height="240"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lwD-FJ-cvF">
+                                <rect key="frame" x="234" y="409" width="95" height="29"/>
+                                <state key="normal" title="Random">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="chageImage:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="t72-lv-wxi"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="lwD-FJ-cvF" secondAttribute="centerX" id="2oc-X1-cwD"/>
+                            <constraint firstItem="23O-GX-rDo" firstAttribute="top" secondItem="cPn-KL-Oip" secondAttribute="bottom" constant="39" id="QTb-zK-Vu8"/>
+                            <constraint firstItem="lwD-FJ-cvF" firstAttribute="top" secondItem="23O-GX-rDo" secondAttribute="bottom" constant="59" id="SpI-JL-RfB"/>
+                            <constraint firstAttribute="centerX" secondItem="23O-GX-rDo" secondAttribute="centerX" id="Un1-2d-obK"/>
+                            <constraint firstAttribute="centerX" secondItem="cPn-KL-Oip" secondAttribute="centerX" id="ZZm-SX-t7V"/>
+                            <constraint firstItem="23O-GX-rDo" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="55" id="l6U-GH-z8x"/>
+                            <constraint firstItem="cPn-KL-Oip" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="30" id="lar-2t-Jmi"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="buttonRandom" destination="lwD-FJ-cvF" id="eAh-AO-S9r"/>
+                        <outlet property="imageViewController" destination="cPn-KL-Oip" id="mfV-NL-73i"/>
+                        <outlet property="textTitle" destination="23O-GX-rDo" id="dAD-6W-WFY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
