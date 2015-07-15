@@ -41,6 +41,12 @@
     }
     
     [CardDeck addObject:allCards];
+    
+    
+    [cards release];
+    [number_list release];
+    [symbol_list release];
+    [allCards release];
 
 }
 

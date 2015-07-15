@@ -25,7 +25,6 @@
     deck = [[SolitaireDeck alloc]init];
     [deck ShuffleCards];
     [deck DisplayCards];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -41,6 +40,7 @@
                 [cardImage setFrame:CGRectMake(j*24+26, 500, 130, 150)];
             }
             [self.view addSubview:cardImage];
+            [cardImage release];
         }
     }
     
