@@ -17,33 +17,34 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //self.scrollView.delegate=self;
     // Do any additional setup after loading the view, typically from a nib.
     scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0,
                                                                self.view.frame.size.width,
                                                                self.view.frame.size.height)];
     
-    //scrollView.pagingEnabled = TRUE;
-    
     NSInteger numOfImages = 22;
+    float accHeight = 0.0;
     for (int i=0;i<numOfImages;i++) {
+        // pre-loading to calculating resized height of image
+        UIImage *img = [UIImage imageNamed:[NSString stringWithFormat:@"%02d.jpg",i+1]];
+        
         UIImageView *image = [[UIImageView alloc] initWithFrame:
                               CGRectMake(0,
-                                         self.view.frame.size.height*i,
+                                         accHeight,
                                          self.view.frame.size.width,
-                                         self.view.frame.size.height)];
-        image.image = [UIImage imageNamed:[NSString stringWithFormat:@"%02d.jpg",i+1]];
+                                         img.size.height*(self.view.frame.size.width / img.size.width))];
+        image.image = img;
         image.contentMode = UIViewContentModeScaleAspectFit;
+        
+        accHeight += img.size.height * (self.view.frame.size.width / img.size.width);
+        
         [scrollView addSubview:image];
-    
     }
     
     scrollView.contentSize = CGSizeMake(self.view.frame.size.width,
-                                        self.view.frame.size.height*numOfImages);
+                                        accHeight);
     
     [self.view addSubview:scrollView];
-    
-    
     
 }
 
