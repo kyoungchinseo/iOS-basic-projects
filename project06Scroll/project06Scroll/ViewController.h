@@ -11,7 +11,16 @@
 @interface ViewController : UIViewController<UIScrollViewDelegate>
 {
     UIScrollView *scrollView;
+    
 }
+
+@property NSMutableArray *imageCacheArray;
+@property NSArray *imageInfo;
+
+- (void)setupScrollInfo;
+- (void)initScrollView;
+- (void)updateScrollView;
+
 
 
 @end
