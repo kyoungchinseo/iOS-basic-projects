@@ -45,12 +45,31 @@
                                         accHeight);
     
     [self.view addSubview:scrollView];
-    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+// before scrolling
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    NSLog(@"Before scroll");
+}
+
+// when scroll is happening
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    NSLog(@"you are scrolling!");
+}
+
+// after scrolling (END)
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    NSLog(@"scrolling is finished");
+}
+
+
 
 @end
