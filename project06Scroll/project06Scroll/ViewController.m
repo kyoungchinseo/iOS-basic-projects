@@ -101,6 +101,22 @@
     float str = scrollView.bounds.origin.y;
     float end = scrollView.bounds.origin.y + self.view.frame.size.height;
     NSLog(@"cureent = %f %f",str,end);
+    
+    // start
+    for (int i=0; i < [imageInfo count]-1; i++) {
+        if ((str >= [[imageInfo objectAtIndex:i]floatValue]) && (str <= [[imageInfo objectAtIndex: i+1] floatValue])) {
+            NSLog(@"str=%d",i);
+        }
+        if ((end >= [[imageInfo objectAtIndex:i]floatValue]) && (end <= [[imageInfo objectAtIndex: i+1] floatValue])) {
+            NSLog(@"end=%d",i);
+        }
+    }
+    
+    
+    
+    
+    // end
+    
 }
 
 - (void)updateScrollView {
@@ -125,7 +141,7 @@
     //NSLog(@"you are scrolling!");
     //NSLog(@"x= %f y= %f w= %f h= %f",scrollView.bounds.origin.x, scrollView.bounds.origin.y, scrollView.bounds.size.width, scrollView.bounds.size.height);
     
-    
+    [self getIndexOfImageForDisplay];
 }
 
 // after scrolling (END)
