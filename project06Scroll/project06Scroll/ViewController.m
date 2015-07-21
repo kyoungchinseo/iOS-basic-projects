@@ -26,7 +26,6 @@
     [super viewDidLoad];
     
     [self setupScrollInfo];
-    // Do any additional setup after loading the view, typically from a nib.
     
     [self initScrollView];
     
