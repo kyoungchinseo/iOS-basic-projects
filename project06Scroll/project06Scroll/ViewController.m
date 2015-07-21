@@ -19,6 +19,8 @@
 
 @synthesize imageCacheArray;
 @synthesize imageInfo;
+@synthesize currentIndexToShow;
+@synthesize prevIndexToShow;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -39,11 +41,23 @@
     
     NSInteger numOfImages = 22;
     
-    [self getIndexOfImageForDisplay];
+    currentIndexToShow = [self getIndexOfImageForDisplay];
+    // if we know the value
+    int strIndex = [[currentIndexToShow objectAtIndex:0] intValue];
+    int endIndex = [[currentIndexToShow objectAtIndex:1] intValue];
+    NSLog(@"get %d %d",strIndex, endIndex);
     
-    for (int i=0;i<numOfImages;i++) {
+    
+    // init imageCacheArray
+    imageCacheArray = [[NSMutableArray alloc] init];
+    for (int i=0; i<numOfImages; i++) {
+        NSNull *nullValue = [NSNull null];
+       [imageCacheArray addObject: nullValue];
+    }
+    
+    for (int i=strIndex; i<=endIndex;i++) {
+        [imageCacheArray removeObjectAtIndex:i];
         
-        // pre-loading to calculating resized height of image
         UIImage *img = [UIImage imageNamed:[NSString stringWithFormat:@"%02d.jpg",i+1]];
         UIImageView *image = [[UIImageView alloc] initWithFrame:
                               CGRectMake(0,
@@ -53,13 +67,18 @@
         image.image = img;
         image.contentMode = UIViewContentModeScaleAspectFit;
         
-        [scrollView addSubview:image];
+        [imageCacheArray insertObject:image atIndex:i];
+    }
+    
+    for (int i=strIndex;i<=endIndex;i++) {
+        [scrollView addSubview: [imageCacheArray objectAtIndex:i]];
     }
     
     scrollView.contentSize = CGSizeMake(self.view.frame.size.width,
                                         [[imageInfo lastObject]floatValue]);
     
-    
+    //
+    prevIndexToShow = currentIndexToShow;
 }
 
 - (void)setupScrollInfo {
@@ -75,52 +94,80 @@
         // pre-loading to calculating resized height of image
         UIImage *img = [UIImage imageNamed:[NSString stringWithFormat:@"%02d.jpg",i+1]];
         
-        //UIImageView *image = [[UIImageView alloc] initWithFrame:
-        //                      CGRectMake(0,
-        //                                 accHeight,
-        //                                 self.view.frame.size.width,
-        //                                 img.size.height*(self.view.frame.size.width / img.size.width))];
-        //image.image = img;
-        //image.contentMode = UIViewContentModeScaleAspectFit;
-        
         accHeight += img.size.height * (self.view.frame.size.width / img.size.width);
-        
     }
     
     // add total size of scroll view to last object
     [info addObject: [NSNumber numberWithFloat:accHeight]];
     
     imageInfo = [[NSArray alloc]initWithArray:info];
-    
-    // init imageCacheArray
-    imageCacheArray = [[NSMutableArray alloc] init];
-    
 }
 
-- (void)getIndexOfImageForDisplay {
+- (NSArray *)getIndexOfImageForDisplay {
     float str = scrollView.bounds.origin.y;
     float end = scrollView.bounds.origin.y + self.view.frame.size.height;
-    NSLog(@"cureent = %f %f",str,end);
     
-    // start
+    int strIndex = 0;
+    int endIndex = 0;
+    
     for (int i=0; i < [imageInfo count]-1; i++) {
         if ((str >= [[imageInfo objectAtIndex:i]floatValue]) && (str <= [[imageInfo objectAtIndex: i+1] floatValue])) {
-            NSLog(@"str=%d",i);
+            //NSLog(@"str=%d",i);
+            strIndex = i;
         }
         if ((end >= [[imageInfo objectAtIndex:i]floatValue]) && (end <= [[imageInfo objectAtIndex: i+1] floatValue])) {
-            NSLog(@"end=%d",i);
+            //NSLog(@"end=%d",i);
+            endIndex = i;
         }
     }
     
-    
-    
-    
-    // end
+    return [[NSArray alloc] initWithObjects:[NSNumber numberWithInt: strIndex], [NSNumber numberWithInt: endIndex], nil];
     
 }
 
 - (void)updateScrollView {
+    currentIndexToShow = [self getIndexOfImageForDisplay];
+    // if we know the value
     
+    if (currentIndexToShow == prevIndexToShow) {
+        // no update
+        return;
+    }
+    
+    // if update is necessary,
+    int strIndex = [[currentIndexToShow objectAtIndex:0] intValue];
+    int endIndex = [[currentIndexToShow objectAtIndex:1] intValue];
+    
+    for (int i=0; i<[imageCacheArray count]; i++) {
+        if ((i >= strIndex) && (i <= endIndex)) { // inside the range to show images on screen
+            if ([[imageCacheArray objectAtIndex:i] isEqual:[NSNull null]]) {
+                
+            
+                [imageCacheArray removeObjectAtIndex:i];
+            
+                UIImage *img = [UIImage imageNamed:[NSString stringWithFormat:@"%02d.jpg",i+1]];
+                UIImageView *image = [[UIImageView alloc] initWithFrame:
+                                      CGRectMake(0,
+                                                 [[imageInfo objectAtIndex: i] floatValue],
+                                                 self.view.frame.size.width,
+                                                 img.size.height*(self.view.frame.size.width / img.size.width))];
+                image.image = img;
+                image.contentMode = UIViewContentModeScaleAspectFit;
+            
+                [imageCacheArray insertObject:image atIndex:i];
+            }
+        } else { // outside the range to show images on screen
+            if (![[imageCacheArray objectAtIndex:i] isEqual:[NSNull null]]) {
+                [imageCacheArray removeObjectAtIndex:i];
+                NSNull *nullValue = [NSNull null];
+                [imageCacheArray insertObject:nullValue atIndex: i];
+            }
+        }
+    }
+    
+    for (int i=strIndex;i<=endIndex;i++) {
+        [scrollView addSubview: [imageCacheArray objectAtIndex:i]];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -138,10 +185,10 @@
 // when scroll is happening
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    //NSLog(@"you are scrolling!");
-    //NSLog(@"x= %f y= %f w= %f h= %f",scrollView.bounds.origin.x, scrollView.bounds.origin.y, scrollView.bounds.size.width, scrollView.bounds.size.height);
+    NSLog(@"you are scrolling!");
     
     [self getIndexOfImageForDisplay];
+    [self updateScrollView];
 }
 
 // after scrolling (END)

@@ -16,11 +16,12 @@
 
 @property NSMutableArray *imageCacheArray;
 @property NSArray *imageInfo;
+@property NSArray *currentIndexToShow;
+@property NSArray *prevIndexToShow;
 
 - (void)setupScrollInfo;
 - (void)initScrollView;
 - (void)updateScrollView;
-
 
 
 @end
