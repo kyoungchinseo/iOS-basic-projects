@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>D6B78503-5793-4B6F-A233-206E5CF19006</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>project07customTableView</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>B16A20C92DCFC34D45B33AC1EEC8504FD80BA45E</key>
 		<string>https://github.com/kyoungchinseo/iOS-basic-projects.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>project07customTableView/project07customTableView.xcodeproj/project.xcworkspace</string>
+	<string>project07customTableView/project07customTableView.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>B16A20C92DCFC34D45B33AC1EEC8504FD80BA45E</key>

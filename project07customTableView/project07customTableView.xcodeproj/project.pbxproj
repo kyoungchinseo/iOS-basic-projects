@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D97B7E9E1B665B7D0086D062 /* NXDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D97B7E9D1B665B7D0086D062 /* NXDataModel.m */; };
+		D97B7EA11B665D640086D062 /* JSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = D97B7EA01B665D640086D062 /* JSONSerializer.m */; };
 		D9A76A1C1B5E79E900DF5185 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D9A76A1B1B5E79E900DF5185 /* main.m */; };
 		D9A76A1F1B5E79E900DF5185 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D9A76A1E1B5E79E900DF5185 /* AppDelegate.m */; };
 		D9A76A221B5E79E900DF5185 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9A76A211B5E79E900DF5185 /* ViewController.m */; };
@@ -49,6 +51,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D97B7E9C1B665B7D0086D062 /* NXDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NXDataModel.h; sourceTree = "<group>"; };
+		D97B7E9D1B665B7D0086D062 /* NXDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NXDataModel.m; sourceTree = "<group>"; };
+		D97B7E9F1B665D640086D062 /* JSONSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONSerializer.h; sourceTree = "<group>"; };
+		D97B7EA01B665D640086D062 /* JSONSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONSerializer.m; sourceTree = "<group>"; };
 		D9A76A161B5E79E900DF5185 /* project07customTableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = project07customTableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9A76A1A1B5E79E900DF5185 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9A76A1B1B5E79E900DF5185 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -125,6 +131,8 @@
 		D9A76A181B5E79E900DF5185 /* project07customTableView */ = {
 			isa = PBXGroup;
 			children = (
+				D97B7E9F1B665D640086D062 /* JSONSerializer.h */,
+				D97B7EA01B665D640086D062 /* JSONSerializer.m */,
 				D9A76A3F1B5E808B00DF5185 /* images */,
 				D9A76A1D1B5E79E900DF5185 /* AppDelegate.h */,
 				D9A76A1E1B5E79E900DF5185 /* AppDelegate.m */,
@@ -134,6 +142,8 @@
 				D9A76A261B5E79E900DF5185 /* Images.xcassets */,
 				D9A76A281B5E79E900DF5185 /* LaunchScreen.xib */,
 				D9A76A191B5E79E900DF5185 /* Supporting Files */,
+				D97B7E9C1B665B7D0086D062 /* NXDataModel.h */,
+				D97B7E9D1B665B7D0086D062 /* NXDataModel.m */,
 			);
 			path = project07customTableView;
 			sourceTree = "<group>";
@@ -316,6 +326,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9A76A221B5E79E900DF5185 /* ViewController.m in Sources */,
+				D97B7E9E1B665B7D0086D062 /* NXDataModel.m in Sources */,
+				D97B7EA11B665D640086D062 /* JSONSerializer.m in Sources */,
 				D9A76A1F1B5E79E900DF5185 /* AppDelegate.m in Sources */,
 				D9A76A1C1B5E79E900DF5185 /* main.m in Sources */,
 			);
@@ -512,6 +524,7 @@
 				D9A76A3B1B5E79E900DF5185 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D9A76A3C1B5E79E900DF5185 /* Build configuration list for PBXNativeTarget "project07customTableViewTests" */ = {
 			isa = XCConfigurationList;
@@ -520,6 +533,7 @@
 				D9A76A3E1B5E79E900DF5185 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
